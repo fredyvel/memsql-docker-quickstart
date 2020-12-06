@@ -32,7 +32,7 @@ if [[ $MEMSQL_VERSION != "developer" ]]; then
     DEPLOY_EXTRA_FLAGS="--version-hash $MEMSQL_VERSION"
 fi
 
-memsql-ops memsql-deploy --role master --developer-edition $DEPLOY_EXTRA_FLAGS
+memsql-ops memsql-deploy --role master --developer-edition --port 3308 $DEPLOY_EXTRA_FLAGS
 memsql-ops memsql-deploy --role leaf --developer-edition --port 3307 $DEPLOY_EXTRA_FLAGS
 
 MASTER_ID=$(memsql-ops memsql-list --memsql-role=master -q)
